@@ -13,6 +13,11 @@ namespace SnakeAndLadder
 
             int startPosition = 0;
 
+            Random random = new Random();
+            int diceRoll = random.Next(1,7);
+            
+            Console.WriteLine(" Dice position after rolling is " +diceRoll);
+            Console.ReadLine();
            
         }
     }
