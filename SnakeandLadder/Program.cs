@@ -8,16 +8,15 @@ namespace SnakeAndLadder
 {
     class Program
 
-
-
     {
 
-        public static int playingOptions(int diceRoll, int dicePosition, int option  )
+        static int playingOptions(int diceRoll, int dicePosition, int option)
         {
-            switch(option)
+            switch (option)
             {
                 case 0:
                     dicePosition = dicePosition - diceRoll;
+
                     break;
 
                 case 1:
@@ -25,6 +24,7 @@ namespace SnakeAndLadder
                     break;
 
                 default:
+
                     dicePosition = dicePosition;
                     break;
             }
@@ -33,27 +33,53 @@ namespace SnakeAndLadder
 
         }
 
-            
-
-
         static void Main(string[] args)
         {
 
             int startPosition = 0;
+            int endPosition = 100;
+
 
             Random random = new Random();
-            int diceRoll = random.Next(1,7);
-            
-            Console.WriteLine(" Dice position after rolling is " +diceRoll);
-            Console.ReadLine();
 
-            int option = random.Next(0,3);
-            int dicePosition = startPosition;
+            string[] chooseOption = { "Snake", "Ladder", "Noplay" };
 
-            dicePosition = playingOptions(diceRoll,dicePosition,option);
-            Console.WriteLine("Dice position after dice roll is " + dicePosition);
-            
-           
+            int positionReached = startPosition;
+
+            while (positionReached != endPosition)
+            {
+                if (positionReached < startPosition)
+                {
+                    positionReached = startPosition;
+                }
+
+                int diceRoll = random.Next(1, 7);
+
+                Console.WriteLine(" Dice position after rolling is " + diceRoll);
+                
+
+                int option = random.Next(0, 3);
+
+                Console.WriteLine("your dice value is " + chooseOption[option]);
+
+                positionReached = playingOptions(diceRoll, positionReached, option);
+
+
+                if (positionReached > endPosition)
+                {
+                    positionReached = positionReached - diceRoll;
+
+                }
+                Console.WriteLine("Your dice position after dice roll is : " + positionReached);
+
+            }
+
+                Console.WriteLine("you have reached to :" + positionReached + "\n woooaahh You Won, Game is ended");
+
+
+                Console.ReadLine();
+
+
+            }
         }
     }
-}
