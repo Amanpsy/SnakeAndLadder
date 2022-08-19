@@ -46,6 +46,8 @@ namespace SnakeAndLadder
 
             int positionReached = startPosition;
 
+            int count = 0;
+
             while (positionReached != endPosition)
             {
                 if (positionReached < startPosition)
@@ -72,6 +74,7 @@ namespace SnakeAndLadder
                 }
                 Console.WriteLine("Your dice position after dice roll is : " + positionReached);
 
+                count ++;
             }
 
                 Console.WriteLine("you have reached to :" + positionReached + "\n woooaahh You Won, Game is ended");
